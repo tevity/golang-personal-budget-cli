@@ -1,7 +1,8 @@
 FROM golang:latest
 
+RUN GO111MODULE=on go get golang.org/x/tools/gopls@latest
+
 RUN go get -u -v \
-    golang.org/x/tools/gopls \
     github.com/stamblerre/gocode \
     github.com/ramya-rao-a/go-outline \
     github.com/newhook/go-symbols \
