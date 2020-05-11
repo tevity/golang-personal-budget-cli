@@ -78,6 +78,11 @@ func (b *Budget) RemoveItem(description string) {
 
 // CreateBudget creates a new budget with a specified max
 func CreateBudget(month time.Month, max float32) (*Budget, error) {
+	_, hasBudget := report[month]
+	if hasBudget {
+		return nil, errDuplicateEntry
+	}
+
 	newBudget := &Budget{
 		Max: max,
 	}
